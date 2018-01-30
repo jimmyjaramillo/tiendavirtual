@@ -20,7 +20,7 @@
             <table id="tablaMostrarCabeceraProdEliminados">
                 <tr>
                     <th>
-                        <h1> Productos habilitados </h1>
+                        <h1> Productos Inhabilitados </h1>
                     </th>
                 </tr>
                 <tr>
