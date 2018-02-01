@@ -90,7 +90,6 @@ public class ServletVenta extends HttpServlet {
             String DescuentoProducto[] = request.getParameterValues("descuentoProd");
             String SubTotalProducto[] = request.getParameterValues("subTotalProd");
 
-            System.out.println(Arrays.toString(CodigoProducto));
             if ("null".equals(CodigoVenta)) {
                 CodigoVenta = "V0001";
             }
@@ -102,7 +101,7 @@ public class ServletVenta extends HttpServlet {
                 producto.setStockProducto(newStock);
                 boolean status = ProductoDB.actualizarProducto(producto);
                 if (status){
-                    System.out.println("actuilizando stock");
+                    System.out.println("actualizando stock");
                 }
             }
            
