@@ -96,6 +96,7 @@
                     <td class="Contenido">
                         <%=dv.getNombreProducto()%>
                         <input type="hidden" name="nombreProd" value="<%=dv.getNombreProducto()%>">
+                        <input type="hidden" name="codProd" value="<%=dv.getCodigoProducto()%>">
                     </td>
                     <td class="Contenido">
                         <%=df.format(dv.getPrecio())%>
@@ -149,8 +150,8 @@
                 <tr>
                     <td>
                         <%
-                            if(lista != null){%>
-                                <input type="button" name="btnRegistrar" id="btnRegistrarVenta" class="button" value="Registrar compra">
+                            if(lista.size() > 0){%>
+                                <input type="button" name="btnRegistrar" id="btnRegistrarVenta" class="button" value="Registrar Compra">
                         <%}%>   
                     </td>
                 </tr>

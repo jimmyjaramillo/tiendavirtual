@@ -5,6 +5,8 @@
  */
 package servlets;
 
+import classes.Producto;
+import classes.ProductoDB;
 import classes.Venta;
 import classes.VentaDB;
 import connection.Conexion;
@@ -15,6 +17,7 @@ import java.sql.Connection;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.util.ArrayList;
+import java.util.Arrays;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -61,7 +64,7 @@ public class ServletVenta extends HttpServlet {
     private void RegistrarVenta(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession(false);
         ArrayList lista = (ArrayList) session.getAttribute("carrito");
-
+   
         DecimalFormat df = new DecimalFormat("0.00");
         DecimalFormatSymbols dfs = df.getDecimalFormatSymbols();
         dfs.setDecimalSeparator('.');
@@ -78,18 +81,31 @@ public class ServletVenta extends HttpServlet {
         boolean resp = VentaDB.registrarVenta(venta);
 
         if (resp) {
-            // Regostrar detalle vemta
+            // Registrar detalle vemta
             String CodigoVenta = request.getParameter("txtCodigoV");
             String NombreProducto[] = request.getParameterValues("nombreProd");
+            String CodigoProducto[] = request.getParameterValues("codProd");
             String PrecioProducto[] = request.getParameterValues("precioProd");
             String CantidadProducto[] = request.getParameterValues("cantidadProd");
             String DescuentoProducto[] = request.getParameterValues("descuentoProd");
             String SubTotalProducto[] = request.getParameterValues("subTotalProd");
 
+            System.out.println(Arrays.toString(CodigoProducto));
             if ("null".equals(CodigoVenta)) {
                 CodigoVenta = "V0001";
             }
-
+            for (int i = 0; i < CodigoProducto.length; i++) {
+                double cantidad = Double.parseDouble(CantidadProducto[i]);
+                Producto producto = ProductoDB.listarProductoPorCodigo(CodigoProducto[i]);
+                Double newStock = 0.0;
+                newStock = producto.getStockProducto()- cantidad;
+                producto.setStockProducto(newStock);
+                boolean status = ProductoDB.actualizarProducto(producto);
+                if (status){
+                    System.out.println("actuilizando stock");
+                }
+            }
+           
             for (int i = 0; i < NombreProducto.length; i++) {
                 try {
                     CallableStatement cs = cn.prepareCall("CALL REGISTRAR_DETALLE_VENTA (?,?,?,?,?,?)");
