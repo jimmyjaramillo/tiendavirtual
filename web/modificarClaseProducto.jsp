@@ -24,7 +24,7 @@
             <table id="tablaModificarCP">
                 <tr>
                     <th colspan="2">
-                        <h1> Modificar CP </h1>
+                        <h1> Modificar Clase Producto </h1>
                     </th>
                 </tr>
                 <tr>
