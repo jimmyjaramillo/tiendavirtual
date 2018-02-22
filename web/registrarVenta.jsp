@@ -33,7 +33,7 @@
                 <tr>
                     <th colspan="7" class="TituloDV">
                         <h3>CARRITO DE COMPRAS</h3>
-                        <input type="hidden" name="txtCodigoV" value="<%=codigoVenta%>">
+                        <input type="text" name="txtCodigoV" value="<%=codigoVenta%>">
                     </th>
                 </tr>
                 <tr>
@@ -150,7 +150,7 @@
                 <tr>
                     <td>
                         <%
-                            if(lista.size() > 0){%>
+                            if(lista != null && lista.size() > 0){%>
                                 <input type="button" name="btnRegistrar" id="btnRegistrarVenta" class="button" value="Registrar Compra">
                         <%}%>   
                     </td>

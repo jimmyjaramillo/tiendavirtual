@@ -4,6 +4,8 @@
     Author     : jimmy
 --%>
 
+<%@page import="classes.ProductoTiendaDB"%>
+<%@page import="classes.ProductoTienda"%>
 <%@page import="classes.ProductoDB"%>
 <%@page import="classes.Producto"%>
 <%@page import="java.util.ArrayList"%>
@@ -65,39 +67,61 @@
 
             <table width="800" id="tablaCatalogo">
                 <tr>
-                    <th colspan="3">
+                    <th colspan="3" align="center">
                         <h1> Catálogo de Productos </h1>
                     </th>
                 </tr>
-
-                <tbody>
-                    <%
-                        ArrayList<Producto> lista = ProductoDB.obtenerProductosHabilitados();
-                        int salto = 0;
-                        for (int i = 0; i < lista.size(); i++) {
-                            Producto producto = lista.get(i);
-        if ((int) producto.getStockProducto() > 0 && producto.getEstadoProducto().equals("HAB")) {%>
-                <th><img src="Imagen/<%=producto.getImagenProducto()%>" width="100" height="100"><br>
-                    <%=producto.getClaseProducto()%> <%=producto.getMarcaProducto()%> <br>
-                    <%=producto.getDescripcionProducto()%><br>
-                    $ <%=producto.getPrecioProducto()%><br>
-                    <input type="button" class="BotonModificar" name="btnModificar" value="Modificar" onclick="location.href = 'modificarProducto.jsp?codigoP=<%=producto.getCodigoProducto()%>'">
-                    <input type="button" class="BotonADD" name="btnADD" value="ADD Carrito" onclick="location.href = 'anadirCarrito.jsp?codigoP=<%=producto.getCodigoProducto()%>&&cliente=<%=cliente%>'"><br>
-                </th>
-                <%        }
-
-                    salto++;
-                    if (salto == 3) {
-                %>
-
                 <tr>
-
+                    <th class="Titulo">
+                        NOMBRE
+                    </th>
+                    <th class="Titulo">
+                        EN STOCK
+                    </th>
+                    <th class="Titulo">
+                        PRECIO UNITARIO ($)
+                    </th>
+                    <th colspan="2" class="Titulo">
+                        OPCION
+                    </th>
                     <%
-                                salto = 0;
-                            }
-                        }
+                        ArrayList<ProductoTienda> lista = ProductoTiendaDB.obtenerProductosTiendaHabilitados();
+                        if (lista.size() == 0) {%>
+                <tr bgcolor="red">
+                    <td colspan="5" align="center">
+                        NO EXISTEN PRODUCTOS DISPONIBLES
+                    </td>
+                </tr>
+                        <%
+                        } else {
+                            for (int i = 0; i < lista.size(); i++) {
+                                ProductoTienda productoTienda = lista.get(i);
+                                if ((int) productoTienda.getCantidadProdTienda() > 0) {%>
+                <tr> 
+                    <%       } else {%>
+                <tr bgcolor="red">
+                    <%       }
                     %>
-                    </tbody>
+                    <td>
+                        <%=productoTienda.getNombreProdTienda()%>
+                    </td>
+                    <td>
+                        <%=productoTienda.getCantidadProdTienda()%>
+                    </td>
+                    <td>
+                        <%=productoTienda.getPrecioProdTienda()%>
+                    </td>
+                    <td class="Opcion">
+<!--                        <input type="button" class="BotonModificar" name="btnModificar" value="Modificar" onclick="location.href = 'modificarProductoTienda.jsp?codigoP=<%=productoTienda.getCodigoProdTienda()%>'">-->
+                        <input type="button" class="BotonADD" name="btnADD" value="ADD Carrito" onclick="location.href = 'anadirCarrito.jsp?codigoP=<%=productoTienda.getCodigoProdTienda()%>&&cliente=<%=cliente%>'">
+                    </td>
+                </tr>
+                <%
+                        }
+
+                    }
+                %>
+                </tr>
             </table>
         </form>
     </body>

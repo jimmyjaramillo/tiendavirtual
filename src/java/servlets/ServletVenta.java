@@ -7,6 +7,8 @@ package servlets;
 
 import classes.Producto;
 import classes.ProductoDB;
+import classes.ProductoTienda;
+import classes.ProductoTiendaDB;
 import classes.Venta;
 import classes.VentaDB;
 import connection.Conexion;
@@ -95,11 +97,13 @@ public class ServletVenta extends HttpServlet {
             }
             for (int i = 0; i < CodigoProducto.length; i++) {
                 double cantidad = Double.parseDouble(CantidadProducto[i]);
-                Producto producto = ProductoDB.listarProductoPorCodigo(CodigoProducto[i]);
-                Double newStock = 0.0;
-                newStock = producto.getStockProducto()- cantidad;
-                producto.setStockProducto(newStock);
-                boolean status = ProductoDB.actualizarProducto(producto);
+                ProductoTienda productoTienda = ProductoTiendaDB.listarProductoTiendaPorCodigo(CodigoProducto[i]);
+                
+                double newStock = 0.0;
+                newStock = productoTienda.getCantidadProdTienda() - cantidad;
+                productoTienda.setCantidadProdTienda((int)newStock);
+                boolean status = ProductoTiendaDB.actualizarProductoTienda(productoTienda);
+                
                 if (status){
                     System.out.println("actualizando stock");
                 }

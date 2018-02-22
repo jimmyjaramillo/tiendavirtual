@@ -18,11 +18,14 @@
                 <tr>
                     <th colspan="5">
                         <h2> Menu administrador </h2>
+                      
+                        <h5 align="right"><a href="catalogo.jsp" class="link"><h4> Página principal </h4></a></h5>
+                   
                     </th>
                 </tr>
                 <tr>
                     <th>
-                        Registrar nuevo
+                        Registrar Productos-Proveedor   
                     </th>
                     <th>
                         Registros habilitados
@@ -38,14 +41,11 @@
                     </th>
                 </tr>
                 <tr>
-                    <td>
-                        <a href="registrarClaseProducto.jsp" class="link">Clase producto</a>
+                    <td>   
                     </td>
-                    <td>
-                        <a href="mostrarClaseProducto.jsp" class="link">Clase producto</a>
+                    <td>    
                     </td>
-                    <td>
-                        <a href="mostrarClaseProductosEliminados.jsp" class="link">Clase producto</a>
+                    <td>                 
                     </td>
                     <td>
                         <a href="mostrarVenta.jsp" class="link">Ir a ventas</a>
@@ -53,44 +53,24 @@
                     <td>
                         <a href="catalogo.jsp" class="link">Ir a catalogo</a>
                     </td>
-                </tr>
+                </t r>
                 <tr>
                     <td>
-                        <a href="registrarMarcaProducto.jsp" class="link">Marca producto</a>
+                        <a href="registrarProductoTienda.jsp" class="link">Producto-Proveedor</a>
                     </td>
                     <td>
-                        <a href="mostrarMarcaProducto.jsp" class="link">Marca producto</a>
+                        <a href="mostrarProductoTienda.jsp" class="link">Productos Tienda</a>
                     </td>
                     <td>
-                        <a href="mostrarMarcaProductosEliminados.jsp" class="link">Marca producto</a>
+                        <a href="mostrarProductosTiendaEliminados.jsp" class="link">Productos Tienda</a>
                     </td>
-                    <td>
-                        
+                    <td> 
                     </td>
-                    <td>
-                        
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <a href="registrarProducto.jsp" class="link">Producto</a>
-                    </td>
-                    <td>
-                        <a href="mostrarProducto.jsp" class="link">Producto</a>
-                    </td>
-                    <td>
-                        <a href="mostrarProductosEliminados.jsp" class="link">Producto</a>
-                    </td>
-                    <td>
-                        
-                    </td>
-                    <td>
-                        
+                    <td>  
                     </td>
                 </tr>
                 <tr>
                     <td>
-
                     </td>
                     <td>
                         <a href="mostrarUsuario.jsp" class="link">Usuario</a>
@@ -98,11 +78,9 @@
                     <td>
                         <a href="mostrarUsuarioEliminado.jsp" class="link">Usuario</a>
                     </td>
-                    <td>
-                        
+                    <td>   
                     </td>
                     <td>
-                        
                     </td>
                 </tr>
             </table>

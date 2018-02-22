@@ -4,6 +4,8 @@
     Author     : jimmy
 --%>
 
+<%@page import="classes.ProductoTiendaDB"%>
+<%@page import="classes.ProductoTienda"%>
 <%@page import="classes.ProductoDB"%>
 <%@page import="classes.Producto"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -19,10 +21,11 @@
     </head>
     <%
         String cliente = request.getParameter("cliente");
-        Producto producto = ProductoDB.listarProductoPorCodigo(request.getParameter("codigoP"));
+        //Producto producto = ProductoDB.listarProductoPorCodigo(request.getParameter("codigoP"));
+        ProductoTienda productoTienda = ProductoTiendaDB.listarProductoTiendaPorCodigo(request.getParameter("codigoP"));
     %>
     <body>
-        <form name="frm" action="ServletProducto" method="post" id="frmAnadirCarrito">
+        <form name="frm" action="ServletProductoTienda" method="post" id="frmAnadirCarrito">
             <input type="hidden" name="txtCliente" value="<%=cliente %>">
             <table id="tablaAnadirCarrito">
                 <tr>
@@ -32,7 +35,7 @@
                 </tr>
                 <tr>
                     <td colspan="2">
-                        <dd> <input type="hidden" name="txtCodigo" value="<%=producto.getCodigoProducto()%>" size="20" maxlength="30"> </dd>
+                <dd> <input type="hidden" name="txtCodigo" value="<%=productoTienda.getCodigoProdTienda()%>" size="20" maxlength="30"> </dd>
                     </td>
                 </tr>
                 <tr>
@@ -40,7 +43,7 @@
                         Nombre producto :
                     </td>
                     <td>
-                        <dd> <input type="text" name="txtNombreP" class="campoNoEditable" value="<%=producto.getClaseProducto() %> <%=producto.getMarcaProducto() %> - <%=producto.getDescripcionProducto()%>" 
+                        <dd> <input type="text" name="txtNombreP" class="campoNoEditable" value="<%=productoTienda.getNombreProdTienda()%>" 
                                size="60" readonly="readonly"> </dd>
                     </td>
                 </tr>
@@ -49,7 +52,7 @@
                         Precio producto :
                     </td>
                     <td>
-                        <dd> <input type="text" name="txtPrecio" class="campoNoEditable" value="<%=producto.getPrecioProducto()%>" size="20" maxlength="30" readonly="readonly"> </dd>
+                <dd> <input type="text" name="txtPrecio" class="campoNoEditable" value="<%=productoTienda.getPrecioProdTienda()%>" size="20" maxlength="30" readonly="readonly"> </dd>
                     </td>
                 </tr>
                 <tr>
@@ -58,7 +61,7 @@
                     </td>
                     <td>
                         <dd> <input type="number" name="txtCantidad" id="txtCantidad" value="1" min="1"> 
-                            <input type="hidden" name="txtCantidadStock" id="txtCantidadStock" value="<%=producto.getStockProducto()%>" min="1"></dd>
+                            <input type="hidden" name="txtCantidadStock" id="txtCantidadStock" value="<%=productoTienda.getCantidadProdTienda()%>" min="1"></dd>
                     </td>
                 </tr>
                 <tr>

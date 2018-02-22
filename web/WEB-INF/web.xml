@@ -20,6 +20,14 @@
         <servlet-name>ServletMarcaProducto</servlet-name>
         <servlet-class>servlets.ServletMarcaProducto</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ServletProdProv</servlet-name>
+        <servlet-class>servlets.ServletProdProv</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ServletProductoTienda</servlet-name>
+        <servlet-class>servlets.ServletProductoTienda</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ServletUsuario</servlet-name>
         <url-pattern>/ServletUsuario</url-pattern>
@@ -39,6 +47,14 @@
     <servlet-mapping>
         <servlet-name>ServletMarcaProducto</servlet-name>
         <url-pattern>/ServletMarcaProducto</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletProdProv</servlet-name>
+        <url-pattern>/ServletProdProv</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletProductoTienda</servlet-name>
+        <url-pattern>/ServletProductoTienda</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
